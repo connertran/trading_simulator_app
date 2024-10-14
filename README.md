@@ -11,3 +11,6 @@ when the jinja files are changed, the server is not restarted.
 
 - to make it restart, save the app.py file( `ctrl` + `s`)
 - reload the browser, the new changes will appeare
+
+
+changes from laptop
