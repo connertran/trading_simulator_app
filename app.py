@@ -2,6 +2,7 @@
 import os
 from flask import Flask
 from flask_debugtoolbar import DebugToolbarExtension
+from database.models import db, connect_db
 
 from blueprints.users import users_bp
 
@@ -11,7 +12,7 @@ def create_app(database_name, testing=False):
     app = Flask(__name__)
 
     # on Render, set the DATABASE_URL environment variable to the database connection string gotten from ElephantSQL.
-    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL", f"postgresql:///{database_name}")
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL", f"postgresql://postgres:1234@localhost:5432/{database_name}")
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SQLALCHEMY_ECHO'] = True
     # app.debug is to turn on or turn off the debug tool bar on the right hand side of the browser.
@@ -34,6 +35,6 @@ def create_app(database_name, testing=False):
     return app
 if __name__ == '__main__':
     app = create_app('trading_db')
-    # connect_db(app)
-    # db.create_all
+    connect_db(app)
+    db.create_all()
     app.run(debug=True)
