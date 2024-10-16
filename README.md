@@ -12,5 +12,18 @@ when the jinja files are changed, the server is not restarted.
 - to make it restart, save the app.py file( `ctrl` + `s`)
 - reload the browser, the new changes will appeare
 
+Create two PostgreSQL databases for the project: one for the app (trading_db) and one for app testing (trading_test).
 
-changes from laptop
+working with flask_migrate (similar when commiting the changes with git): flask_migrate helps you update the database, when the 'sqlalchemy' file is changed.
+
+1. `flask db init`
+
+- This will create a 'migrations directory' where Alembic will store migration scripts.
+
+2. `flask db migrate -m "Describe your migration here"`
+
+- This will generate a migration script that reflects the changes made to your models.
+
+3. `flask db upgrade`
+
+- This command will apply the new migration script to update your database schema without dropping or recreating the database.
