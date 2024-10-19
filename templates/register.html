@@ -1,0 +1,16 @@
+{%extends 'base.html'%} {%block title%}Register{%endblock%} {%block content%}
+<h1>Trading Simulator</h1>
+<h2>Sign Up</h2>
+<p>Create your new account.</p>
+<form method="POST">
+  {{form.hidden_tag()}}{%for field in form if field.widget.input_type !=
+  'hidden'%}
+  <div>
+    {{field.label}}: {{field}} {%for error in field.errors%}
+    <small>{{error}}</small>
+    {%endfor%}
+  </div>
+  {%endfor%}
+  <button type="submit">Submit</button>
+</form>
+{%endblock%}

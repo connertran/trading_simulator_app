@@ -25,6 +25,8 @@ class User(db.Model):
     wallet = db.Column(db.Float,
                        nullable=False,
                        default=1000)
+    profile_pic = db.Column(db.Text,
+                            nullable=False)
     is_admin = db.Column(db.Boolean, default=False)
 
 class Stock(db.Model):

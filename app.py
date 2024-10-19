@@ -6,6 +6,7 @@ from flask_migrate import Migrate
 from database.models import db, connect_db
 
 from blueprints.users import users_bp
+from blueprints.auth import auth_db
 
 # Run this with "python -m app" in the command line
 
@@ -34,6 +35,7 @@ def create_app(testing=False):
     ##############################################################################
 
     app.register_blueprint(users_bp)
+    app.register_blueprint(auth_db)
 
     return app
 if __name__ == '__main__':
